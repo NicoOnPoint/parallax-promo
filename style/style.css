@@ -509,10 +509,6 @@ section {
     height: 50vh;
   }
 
-	.about {
-  padding-bottom: 300px;
-}
-
   .benefits__item {
     width: calc(50% - 20px);
   }
@@ -588,6 +584,9 @@ section {
     font-size: 28px;
     letter-spacing: 5px;
   }
+}
+.about {
+  padding-bottom: 300px;
 }
 
 
