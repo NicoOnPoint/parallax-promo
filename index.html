@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Nico on Point</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- hier het script plakken -->
+   <script>
+  (function() {
+    // voorkom redirect-loop als je al op een taalpagina zit
+    var path = window.location.pathname;
+
+    if (path.startsWith('/en') || path.startsWith('/sv')) {
+      return;
+    }
+
+    // check of gebruiker eerder een taalkeuze had
+    var storedLang = localStorage.getItem('preferredLang');
+    if (storedLang === 'en' || storedLang === 'sv') {
+      window.location.replace('/' + storedLang + '/');
+      return;
+    }
+
+    // browsertaal uitlezen
+    var userLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+
+    var target = userLang.startsWith('sv') ? 'sv' : 'en';
+
+    // keuze bewaren
+    localStorage.setItem('preferredLang', target);
+
+    // redirect naar juiste taalmap
+    window.location.replace('/' + target + '/');
+  })();
+</script>
+
+</head>
+<body>
+  <noscript>
+    Please visit <a href="/en/">the English version</a> or <a href="/sv/">the Swedish version</a>.
+  </noscript>
+</body>
+</html>
